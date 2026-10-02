@@ -17,8 +17,8 @@ let app = createApp({
                 "Name"
             ]),
             slide_idx: ref(0),
-            curve_sections: ref(12),
-            show_points: ref(false)
+            curve_sections: ref(36),
+            show_points: ref(true)
         };
     },
 
