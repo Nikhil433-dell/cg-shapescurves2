@@ -144,11 +144,43 @@ class Renderer {
             );
 
         if (this.show_points) {
-            this.drawVertex({x: 380, y: 280}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 400, y: 120}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 580, y: 300}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 400, y: 480}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 220, y: 300}, [255, 255, 255, 255], framebuffer);
+            let point_color = [0, 0, 0, 255];
+
+            // Center connection points
+            this.drawVertex({x: 380, y: 280}, point_color, framebuffer);
+            this.drawVertex({x: 420, y: 280}, point_color, framebuffer);
+            this.drawVertex({x: 420, y: 320}, point_color, framebuffer);
+            this.drawVertex({x: 380, y: 320}, point_color, framebuffer);
+
+            // Top leaf control points
+            this.drawVertex({x: 280, y: 220}, point_color, framebuffer);
+            this.drawVertex({x: 290, y: 90}, point_color, framebuffer);
+            this.drawVertex({x: 400, y: 120}, point_color, framebuffer);
+            this.drawVertex({x: 510, y: 90}, point_color, framebuffer);
+            this.drawVertex({x: 520, y: 220}, point_color, framebuffer);
+
+            // Right leaf control points
+            this.drawVertex({x: 480, y: 180}, point_color, framebuffer);
+            this.drawVertex({x: 610, y: 190}, point_color, framebuffer);
+            this.drawVertex({x: 580, y: 300}, point_color, framebuffer);
+            this.drawVertex({x: 610, y: 410}, point_color, framebuffer);
+            this.drawVertex({x: 480, y: 420}, point_color, framebuffer);
+
+            // Bottom leaf control points
+            this.drawVertex({x: 520, y: 380}, point_color, framebuffer);
+            this.drawVertex({x: 510, y: 510}, point_color, framebuffer);
+            this.drawVertex({x: 400, y: 480}, point_color, framebuffer);
+            this.drawVertex({x: 290, y: 510}, point_color, framebuffer);
+            this.drawVertex({x: 280, y: 380}, point_color, framebuffer);
+
+            // Left leaf control points
+            this.drawVertex({x: 320, y: 420}, point_color, framebuffer);
+            this.drawVertex({x: 190, y: 410}, point_color, framebuffer);
+            this.drawVertex({x: 220, y: 300}, point_color, framebuffer);
+            this.drawVertex({x: 190, y: 190}, point_color, framebuffer);
+            this.drawVertex({x: 320, y: 180}, point_color, framebuffer);
+
+
         }
 
         
@@ -169,7 +201,7 @@ class Renderer {
         let earth_land_color = [0, 180, 100, 255];
         let moon_color = [190, 190, 190, 255];
         let ring_color = [220, 180, 80, 255];
-        let star_color = [255, 255, 255, 255];
+        let star_color = [0, 0, 0, 255];
             
         // Earth
             this.drawCircle(
@@ -249,8 +281,14 @@ class Renderer {
             );
 
         if (this.show_points) {
-            this.drawVertex({x: 300, y: 330}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 510, y: 200}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 300, y: 330}, [0, 0, 0, 255], framebuffer);
+            this.drawVertex({x: 250, y: 280}, [0, 0, 0, 255], framebuffer);
+            this.drawVertex({x: 350, y: 390}, [0, 0, 0, 255], framebuffer);
+            this.drawVertex({x: 390, y: 260}, [0, 0, 0, 255], framebuffer);
+            this.drawVertex({x: 510, y: 200}, [0, 0, 0, 255], framebuffer);
+            this.drawVertex({x: 510, y: 180}, [0, 0, 0, 255], framebuffer);
+            this.drawVertex({x: 540, y: 220}, [0, 0, 0, 255], framebuffer);
+            this.drawVertex({x: 505, y: 235}, [0, 0, 0, 255], framebuffer);
         }
 
         
@@ -311,10 +349,13 @@ class Renderer {
         );
 
         if (this.show_points) {
-            this.drawVertex(back_left, [255, 255, 255, 255], framebuffer);
-            this.drawVertex(back_right, [255, 255, 255, 255], framebuffer);
-            this.drawVertex(front_left, [255, 255, 255, 255], framebuffer);
-            this.drawVertex(front_right, [255, 255, 255, 255], framebuffer);
+            this.drawVertex(back_left, [0, 0, 0, 255], framebuffer);
+            this.drawVertex(back_right, [0, 0, 0, 255], framebuffer);
+            this.drawVertex(front_left, [0, 0, 0, 255], framebuffer);
+            this.drawVertex(front_right, [0, 0, 0, 255], framebuffer);
+            this.drawVertex(bottom_back_left, [0, 0, 0, 255], framebuffer);
+            this.drawVertex(bottom_front_left, [0, 0, 0, 255], framebuffer);
+            this.drawVertex(bottom_back_left, [0, 0, 0, 255], framebuffer);
         }
     }
 
@@ -350,44 +391,30 @@ class Renderer {
             );
 
         // I
-            this.drawLine(
-                {x: 170, y: 200},
-                {x: 250, y: 200},
-                color,
-                framebuffer
-            );
-
         this.drawCircle(
-                {x: 210, y: 160},
-                14,
-                sections,
-                color,
-                framebuffer
-            );
+            {x: 210, y: 390},
+            10,
+            sections,
+            color,
+            framebuffer
+        );
 
         this.drawConvexPolygon(
             [
-                {x: 195, y: 200},
-                {x: 225, y: 200},
-                {x: 210, y: 400}
+                {x: 210, y: 370},
+                {x: 198, y: 200},
+                {x: 222, y: 200}
             ],
             color,
             framebuffer
         );
 
         this.drawLine(
-                {x: 170, y: 200},
-                {x: 250, y: 200},
-                color,
-                framebuffer
-            );
-
-            this.drawLine(
-                {x: 170, y: 400},
-                {x: 250, y: 400},
-                color,
-                framebuffer
-            );
+            {x: 210, y: 370},
+            {x: 210, y: 200},
+            color,
+            framebuffer
+        );
 
         // K
             this.drawLine(
@@ -441,44 +468,37 @@ class Renderer {
 
         // I
         this.drawCircle(
-                {x: 590, y: 160},
-                14,
-                sections,
-                color,
-                framebuffer
-            );
+            {x: 590, y: 390},
+            10,
+            sections,
+            color,
+            framebuffer
+        );
 
         this.drawConvexPolygon(
             [
-                {x: 575, y: 200},
-                {x: 605, y: 200},
-                {x: 590, y: 400}
+                {x: 590, y: 370},
+                {x: 578, y: 200},
+                {x: 602, y: 200}
             ],
             color,
             framebuffer
         );
 
         this.drawLine(
-                {x: 550, y: 200},
-                {x: 630, y: 200},
-                color,
-                framebuffer
-            );
-
-            this.drawLine(
-                {x: 550, y: 400},
-                {x: 630, y: 400},
-                color,
-                framebuffer
-            );
+            {x: 590, y: 370},
+            {x: 590, y: 200},
+            color,
+            framebuffer
+        );
 
         // L
         this.drawConvexPolygon(
             [
-                {x: 680, y: 200},
-                {x: 710, y: 200},
-                {x: 710, y: 370},
-                {x: 680, y: 400}
+                {x: 680, y: 400},
+                {x: 710, y: 400},
+                {x: 710, y: 230},
+                {x: 680, y: 200}
             ],
             color,
             framebuffer
@@ -486,20 +506,67 @@ class Renderer {
 
         this.drawConvexPolygon(
             [
-                {x: 680, y: 370},
-                {x: 770, y: 370},
-                {x: 770, y: 400},
-                {x: 680, y: 400}
+                {x: 680, y: 230},
+                {x: 770, y: 230},
+                {x: 770, y: 200},
+                {x: 680, y: 200}
             ],
             color,
             framebuffer
         );
 
         if (this.show_points) {
-            this.drawVertex({x: 50, y: 200}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 290, y: 300}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 420, y: 300}, [255, 255, 255, 255], framebuffer);
-            this.drawVertex({x: 680, y: 200}, [255, 255, 255, 255], framebuffer);
+            let point_color = [0, 0, 0, 255];
+
+            // N points
+            this.drawVertex({x: 50, y: 400}, point_color, framebuffer);
+            this.drawVertex({x: 50, y: 200}, point_color, framebuffer);
+            this.drawVertex({x: 130, y: 400}, point_color, framebuffer);
+            this.drawVertex({x: 130, y: 200}, point_color, framebuffer);
+
+            // First I: dot center and triangle points
+            this.drawVertex({x: 210, y: 390}, point_color, framebuffer);
+            this.drawVertex({x: 210, y: 370}, point_color, framebuffer);
+            this.drawVertex({x: 198, y: 200}, point_color, framebuffer);
+            this.drawVertex({x: 222, y: 200}, point_color, framebuffer);
+
+            // K vertical line and Bezier points
+            this.drawVertex({x: 290, y: 200}, point_color, framebuffer);
+            this.drawVertex({x: 290, y: 400}, point_color, framebuffer);
+            this.drawVertex({x: 290, y: 300}, point_color, framebuffer);
+
+            this.drawVertex({x: 320, y: 275}, point_color, framebuffer);
+            this.drawVertex({x: 350, y: 220}, point_color, framebuffer);
+            this.drawVertex({x: 380, y: 200}, point_color, framebuffer);
+
+            this.drawVertex({x: 320, y: 325}, point_color, framebuffer);
+            this.drawVertex({x: 350, y: 380}, point_color, framebuffer);
+            this.drawVertex({x: 380, y: 400}, point_color, framebuffer);
+
+            // H points
+            this.drawVertex({x: 420, y: 200}, point_color, framebuffer);
+            this.drawVertex({x: 420, y: 400}, point_color, framebuffer);
+            this.drawVertex({x: 500, y: 200}, point_color, framebuffer);
+            this.drawVertex({x: 500, y: 400}, point_color, framebuffer);
+            this.drawVertex({x: 420, y: 300}, point_color, framebuffer);
+            this.drawVertex({x: 500, y: 300}, point_color, framebuffer);
+
+            // Second I: dot center and triangle points
+            this.drawVertex({x: 590, y: 390}, point_color, framebuffer);
+            this.drawVertex({x: 590, y: 370}, point_color, framebuffer);
+            this.drawVertex({x: 578, y: 200}, point_color, framebuffer);
+            this.drawVertex({x: 602, y: 200}, point_color, framebuffer);
+
+            // L polygon points
+            this.drawVertex({x: 680, y: 400}, point_color, framebuffer);
+            this.drawVertex({x: 710, y: 400}, point_color, framebuffer);
+            this.drawVertex({x: 710, y: 230}, point_color, framebuffer);
+            this.drawVertex({x: 680, y: 200}, point_color, framebuffer);
+
+            this.drawVertex({x: 680, y: 230}, point_color, framebuffer);
+            this.drawVertex({x: 770, y: 230}, point_color, framebuffer);
+            this.drawVertex({x: 770, y: 200}, point_color, framebuffer);
+
         }
         
     }
