@@ -57,11 +57,9 @@ class Renderer {
         let leaf_color = [0, 160, 80, 255];
         let sections = this.num_curve_sections;
 
-        if (this.show_points) {
-          
-            // attempt to draw a clover leaf
+        // attempt to draw a clover leaf
 
-            // Top leaf
+        // Top leaf
             this.drawBezierCurve(
                 {x: 380, y: 280},
                 {x: 280, y: 220},
@@ -145,7 +143,13 @@ class Renderer {
                 framebuffer
             );
 
-        } 
+        if (this.show_points) {
+            this.drawVertex({x: 380, y: 280}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 400, y: 120}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 580, y: 300}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 400, y: 480}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 220, y: 300}, [255, 255, 255, 255], framebuffer);
+        }
 
         
         // Following line is example of drawing a single line
@@ -167,8 +171,7 @@ class Renderer {
         let ring_color = [220, 180, 80, 255];
         let star_color = [255, 255, 255, 255];
             
-        if (this.show_points) {
-            // Earth
+        // Earth
             this.drawCircle(
                 {x: 300, y: 330},
                 150,
@@ -245,6 +248,9 @@ class Renderer {
                 framebuffer
             );
 
+        if (this.show_points) {
+            this.drawVertex({x: 300, y: 330}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 510, y: 200}, [255, 255, 255, 255], framebuffer);
         }
 
         
@@ -271,10 +277,8 @@ class Renderer {
         let bottom_front_left = {x: 400, y: 520};
         let bottom_back_left = {x: 300, y: 460};
 
-        if (this.show_points) {
-
-            // left 
-            this.drawConvexPolygon(
+        // left 
+        this.drawConvexPolygon(
                 [
                     back_left,
                     front_left,
@@ -284,7 +288,7 @@ class Renderer {
                 left_color,
                 framebuffer
             );
-            this.drawConvexPolygon(
+        this.drawConvexPolygon(
                 [
                     back_left,
                     back_right,
@@ -295,7 +299,7 @@ class Renderer {
                 framebuffer
             );
 
-            this.drawConvexPolygon(
+        this.drawConvexPolygon(
                 [
                     front_left,
                     front_right,
@@ -304,8 +308,13 @@ class Renderer {
                 ],
                 front_color,
                 framebuffer
-            );
+        );
 
+        if (this.show_points) {
+            this.drawVertex(back_left, [255, 255, 255, 255], framebuffer);
+            this.drawVertex(back_right, [255, 255, 255, 255], framebuffer);
+            this.drawVertex(front_left, [255, 255, 255, 255], framebuffer);
+            this.drawVertex(front_right, [255, 255, 255, 255], framebuffer);
         }
     }
 
@@ -318,8 +327,7 @@ class Renderer {
         let sections = this.num_curve_sections;
 
         // drawing NIKHIL
-        if (this.show_points) {
-            // N
+        // N
             this.drawLine(
                 {x: 50, y: 400},
                 {x: 50, y: 200},
@@ -341,7 +349,7 @@ class Renderer {
                 framebuffer
             );
 
-            // I
+        // I
             this.drawLine(
                 {x: 170, y: 200},
                 {x: 250, y: 200},
@@ -349,9 +357,27 @@ class Renderer {
                 framebuffer
             );
 
-            this.drawLine(
-                {x: 210, y: 200},
-                {x: 210, y: 400},
+        this.drawCircle(
+                {x: 210, y: 160},
+                14,
+                sections,
+                color,
+                framebuffer
+            );
+
+        this.drawConvexPolygon(
+            [
+                {x: 195, y: 200},
+                {x: 225, y: 200},
+                {x: 210, y: 400}
+            ],
+            color,
+            framebuffer
+        );
+
+        this.drawLine(
+                {x: 170, y: 200},
+                {x: 250, y: 200},
                 color,
                 framebuffer
             );
@@ -363,7 +389,7 @@ class Renderer {
                 framebuffer
             );
 
-            // K
+        // K
             this.drawLine(
                 {x: 290, y: 200},
                 {x: 290, y: 400},
@@ -391,7 +417,7 @@ class Renderer {
                 framebuffer
             );
 
-            // H
+        // H
             this.drawLine(
                 {x: 420, y: 200},
                 {x: 420, y: 400},
@@ -413,17 +439,28 @@ class Renderer {
                 framebuffer
             );
 
-            // I
-            this.drawLine(
-                {x: 550, y: 200},
-                {x: 630, y: 200},
+        // I
+        this.drawCircle(
+                {x: 590, y: 160},
+                14,
+                sections,
                 color,
                 framebuffer
             );
 
-            this.drawLine(
-                {x: 590, y: 200},
-                {x: 590, y: 400},
+        this.drawConvexPolygon(
+            [
+                {x: 575, y: 200},
+                {x: 605, y: 200},
+                {x: 590, y: 400}
+            ],
+            color,
+            framebuffer
+        );
+
+        this.drawLine(
+                {x: 550, y: 200},
+                {x: 630, y: 200},
                 color,
                 framebuffer
             );
@@ -435,30 +472,34 @@ class Renderer {
                 framebuffer
             );
 
-            // L
-            this.drawLine(
-                {x: 680, y: 205},
-                {x: 680, y: 400},
-                color,
-                framebuffer
-            );
+        // L
+        this.drawConvexPolygon(
+            [
+                {x: 680, y: 200},
+                {x: 710, y: 200},
+                {x: 710, y: 370},
+                {x: 680, y: 400}
+            ],
+            color,
+            framebuffer
+        );
 
-            this.drawBezierCurve(
-                {x: 680, y: 205},
-                {x: 700, y: 235},
-                {x: 740, y: 235},
-                {x: 760, y: 205},
-                sections,
-                color,
-                framebuffer
-            );
+        this.drawConvexPolygon(
+            [
+                {x: 680, y: 370},
+                {x: 770, y: 370},
+                {x: 770, y: 400},
+                {x: 680, y: 400}
+            ],
+            color,
+            framebuffer
+        );
 
-            this.drawLine(
-                {x: 680, y: 205},
-                {x: 760, y: 205},
-                color,
-                framebuffer
-            );
+        if (this.show_points) {
+            this.drawVertex({x: 50, y: 200}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 290, y: 300}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 420, y: 300}, [255, 255, 255, 255], framebuffer);
+            this.drawVertex({x: 680, y: 200}, [255, 255, 255, 255], framebuffer);
         }
         
     }
@@ -541,7 +582,7 @@ class Renderer {
 
         let total_triangles = vertex_list.length - 2
 
-        for (let i = 0; i <= total_triangles; i++ ) {
+        for (let i = 1; i < vertex_list.length - 1; i++ ) {
 
             let point_a = vertex_list[0]
             let point_b = vertex_list[i]
@@ -576,34 +617,17 @@ class Renderer {
         //     framebuffer
         // );
 
-        // the below code draws a rectangle
+        let size = 6;
 
-        let size = 100
-
-        // length
         this.drawLine(
-            {x: v.x - size/2, y: v.y - size},
-            {x: v.x - size/2, y: v.y + size},
+            {x: v.x - size, y: v.y - size},
+            {x: v.x + size, y: v.y + size},
             color,
             framebuffer
         );
         this.drawLine(
-            {x: v.x + size/2, y: v.y - size},
-            {x: v.x + size/2, y: v.y + size},
-            color,
-            framebuffer
-        );
-
-        // breadth
-        this.drawLine(
-            {x: v.x - size/2, y: v.y + size},
-            {x: v.x + size/2, y: v.y + size},
-            color,
-            framebuffer
-        );
-        this.drawLine(
-            {x: v.x - size/2, y: v.y - size},
-            {x: v.x + size/2, y: v.y - size},
+            {x: v.x - size, y: v.y + size},
+            {x: v.x + size, y: v.y - size},
             color,
             framebuffer
         );
